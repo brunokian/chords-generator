@@ -4,6 +4,7 @@ import chordsList from './Datas';
 
 function App() {
   const [chord, setChord] = useState('')
+  const [lastChord, setLastChord] = useState('')
 
   const randomChords = () => {
     const index = Math.floor(Math.random() * chordsList.length)
@@ -13,7 +14,13 @@ function App() {
 
   const chordsGenerator = () => {
     // console.log(randomChords());
-    setChord(randomChords())
+    const newChord = randomChords()
+    if (newChord !== chord) {
+      setChord(newChord)
+    } else {
+      chordsGenerator()
+    }
+    
   }
 
   return (
