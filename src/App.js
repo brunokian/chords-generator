@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import chordsList from './Datas';
 
 function App() {
+  const [chord, setChord] = useState('')
+
+  const randomChords = () => {
+    const index = Math.floor(Math.random() * chordsList.length)
+    // console.log(chordsList[index]);
+    return chordsList[index]
+  }
+
+  const chordsGenerator = () => {
+    // console.log(randomChords());
+    setChord(randomChords())
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>{chord}</h1>
+      <button onClick={ chordsGenerator}>
+        START
+      </button>
     </div>
   );
 }
