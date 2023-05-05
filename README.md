@@ -71,6 +71,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 ### Run with docker:
-
+#### Build the image
 ```docker build -t chords-generator .```
+
+#### Start the server
 ```docker run -it --rm -p 3000:3000 chords-generator```
+
+#### Development container
+```docker run -it --entrypoint "/bin/bash" --rm -p 3000:3000 chords-generator```
