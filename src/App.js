@@ -3,7 +3,7 @@ import './App.css';
 import chordsList from './Datas';
 
 function App() {
-  const [chord, setChord] = useState('')
+  const [chord, setChord] = useState('C')
   const [hasStarted, setHasStarted] = useState(false)
   const [intervalId, setIntervalId] = useState(null)
 
@@ -31,7 +31,6 @@ function App() {
       }, 1000)
       setIntervalId(id)
     }
-    return () => clearInterval(intervalId)
   }, [hasStarted])
 
   const handleClick = () => {
