@@ -5,6 +5,7 @@ import { naturalChords, flatChords, sharpChords } from './Datas';
 function App() {
   const [chord, setChord] = useState('C')
   const [selectChords, setSelectChords] = useState('')
+  const [selectTimer, setSelectTimer] = useState(5)
   const [hasStarted, setHasStarted] = useState(false)
   const [intervalId, setIntervalId] = useState(null)
 
@@ -35,9 +36,10 @@ function App() {
 
   useEffect(() => {
     if (hasStarted) {
+      let timer = selectTimer * 1000
       const id = setInterval(() => {
         chordsGenerator()
-      }, 1000)
+      }, timer)
       setIntervalId(id)
     }
   }, [hasStarted])
@@ -50,8 +52,13 @@ function App() {
     }
   }
 
-  const handleSelect = (event) => {
-    setSelectChords(event.target.value)
+  const handleSelect = (event, selectName) => {
+    if (selectName === 'chords') {
+      setSelectChords(event.target.value)
+    }
+    if (selectName === 'timer') {
+      setSelectTimer(event.target.value)
+    }
   }
 
   return (
@@ -61,11 +68,21 @@ function App() {
         {hasStarted ? 'STOP': 'START'}
       </button>
 
-      <select value={selectChords} onChange={handleSelect}>
-        <option value=''>only natural</option>
+      <select value={selectChords} onChange={(event) => handleSelect(event, 'chords')}>
+        <option value='natural'>only natural</option>
         <option value='flat'>flat</option>
         <option value='sharp'>sharp</option>
         <option value='all'>all</option>
+      </select>
+
+      <select value={selectTimer} onChange={(event) => handleSelect(event, 'timer')}>
+        <option value={1}>1</option>
+        <option value={2}>2</option>
+        <option value={3}>3</option>
+        <option value={4}>4</option>
+        <option value={5}>5</option>
+        <option value={6}>6</option>
+        <option value={7}>7</option>
       </select>
 
     </div>
