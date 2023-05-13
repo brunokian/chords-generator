@@ -1,17 +1,15 @@
 import SelectMenu from './Inputs/SelectMenu';
 import Toggle from './Inputs/Toggle';
 import Slider from './Inputs/Slider';
-import utils from './Utils';
+import chordsList from '../Datas';
 
 
 export default function ConfigurationPanel(props) {
-    const keys = utils.notes.reduce((a, v) => ({ ...a, [v]: v}), {"Random":""})
+    const keys = chordsList.reduce((a, v) => ({ ...a, [v]: v}), {"Random":""})
 
     return (
         <div className='w-full h-full flex flex-col'>
-            <div className='m-auto'>
-                {props.children}
-            </div>
+            <div className='m-auto'>{props.children}</div>
             <div className='bg-stone-700 rounded-lg p-2 my-4 mx-auto lg:w-[30%] md:w-[55%] w-full'>
                 <div className='rounded md:p-2  text-sm'>
                     <Slider>Chord changes speed</Slider>
