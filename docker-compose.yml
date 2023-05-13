@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  ChordsGenerator:
+    image: chordsgenerator
+    container_name: ChordsGenerator
+    build: ./
+    volumes:
+      - ./:/home/app
+    ports:
+      - 3000:3000

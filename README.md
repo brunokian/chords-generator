@@ -78,4 +78,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ```docker run -it --rm -p 3000:3000 chords-generator```
 
 #### Development container
-```docker run -it --entrypoint "/bin/bash" --rm -p 3000:3000 chords-generator```
+```docker run -it --entrypoint "/bin/bash" --rm -p 3000:3000 -v $(pwd):/home/app/ chords-generator```
