@@ -12,12 +12,11 @@ function RandomGenerator() {
     const index = Math.floor(Math.random() * arrayChords.length)
     // console.log(arrayChords);
     const newChord = arrayChords[index]
-    console.log(newChord);
+    setChord(newChord)
+    // console.log(newChord);
     if (newChord !== chord) {
-      setChord(newChord)
       return newChord
     } else {
-      console.log('repetido');
       return arrayChords[index+1]
     }
   }

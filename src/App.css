@@ -10,6 +10,14 @@ h1 {
   justify-content: center;
 }
 
+h3 {
+  font-size: 30px;
+  margin-top: 250px;
+  color: rgb(8, 240, 8);
+  display: flex;
+  justify-content: center;
+}
+
 button {
   display: flex;
   margin-left: auto;

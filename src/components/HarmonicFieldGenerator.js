@@ -3,21 +3,8 @@ import { allChords } from '../Datas';
 
 function HarmonicFieldGenerator() {
     const [chord, setChord] = useState('C')
-    const [selectField, setSelectField] = useState('')
-    const [selectTimer, setSelectTimer] = useState(2)
-    const [hasStarted, setHasStarted] = useState(false)
-    const [intervalId, setIntervalId] = useState(null)
- 
-    const randomChords = (n) => {
-        const index = Math.floor(Math.random() * majorHarmonicField.length)
-        const newChord = majorHarmonicField(n)[index]
-        if (newChord !== chord) {
-            setChord(newChord)
-            return newChord
-        } else {
-            randomChords(n)
-        }
-    }
+    const [selectField, setSelectField] = useState(1)
+    const [field, setField] = useState([])
 
     const majorHarmonicField = (n) => {
         let a = allChords.slice(n).concat(allChords.slice(0, n))
@@ -32,50 +19,25 @@ function HarmonicFieldGenerator() {
         return b
     }
 
-    // useEffect(() => {
-    //     if (hasStarted) {
-    //         let timer = selectTimer * 1000
-    //         const id = setInterval(() => {
-    //             chordsGenerator()
-    //         }, timer)
-    //         setIntervalId(id)
-    //     }
-    // }, [hasStarted])
+    const handleSelect = (event) => {
+        setSelectField(event.target.value)
+    }
 
-    // const handleClick = () => {
-    //     setHasStarted(!hasStarted)
-    //     if (intervalId) {
-    //         clearInterval(intervalId)
-    //         setIntervalId(null)
-    //     }
-    // }
+    useEffect (() => {
+        let result = majorHarmonicField(selectField)
+        setField(result)
+    }, [selectField])
+
 
     return (
         // let newtest = test.slice(n).concat(test.slice(0, n))
         <div>
-
-            <h1>{chord}</h1>
-            {/* <button onClick={handleClick}>
-                {hasStarted ? 'STOP' : 'START'}
-            </button>
-
-            <select value={selectChords} onChange={(event) => handleSelect(event, 'chords')}>
-                <option value='natural'>only natural</option>
-                <option value='flat'>flat</option>
-                <option value='sharp'>sharp</option>
-                <option value='all'>all</option>
+            <h3>{field.join(" - ")}</h3>
+            <select value={selectField} onChange={(event) => handleSelect(event)}>
+                {allChords.map((note, index) => (
+                    <option key={index} value={index}>{note}</option>
+                ))}
             </select>
-
-            <label for='timer'>Timer</label>
-            <select name='timer' value={selectTimer} onChange={(event) => handleSelect(event, 'timer')}>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-                <option value={7}>7</option>
-            </select> */}
         </div>
     )
 }
