@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { allChords } from '../Datas';
 
 function HarmonicFieldGenerator() {
@@ -23,23 +22,6 @@ function HarmonicFieldGenerator() {
         setSelectField(event.target.value)
     }
 
-    useEffect (() => {
-        let result = majorHarmonicField(selectField)
-        setField(result)
-    }, [selectField])
-
-
-    return (
-        // let newtest = test.slice(n).concat(test.slice(0, n))
-        <div>
-            <h3>{field.join(" - ")}</h3>
-            <select value={selectField} onChange={(event) => handleSelect(event)}>
-                {allChords.map((note, index) => (
-                    <option key={index} value={index}>{note}</option>
-                ))}
-            </select>
-        </div>
-    )
 }
 
 export default HarmonicFieldGenerator;
