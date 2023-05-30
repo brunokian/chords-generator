@@ -4,8 +4,8 @@ const handleChange = (event, key, state, setState) => {
     setState(state)
 }
 
-const handleButton = (event, key, state, setState) => {
-    state[key] = !state[key] ?? true
+const handleButton = (key, state, setState) => {
+    state[key] = !state[key]
     setState(state)
 }
 
