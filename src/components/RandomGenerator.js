@@ -7,16 +7,10 @@ function RandomGenerator() {
   const [selectChords, setSelectChords] = useState('all')
   const [selectTimer, setSelectTimer] = useState(2)
   const [hasStarted, setHasStarted] = useState(false)
-  const [intervalId, setIntervalId] = useState(null)
+  // const [intervalId, setIntervalId] = useState(null)
   const [hasVariation, setHasVariation] = useState(true)
 
-  // const metronomeSound = useRef(
-  //   new Howl({
-  //     src: ['public/timerSound.wav'], // Substitua pelo caminho correto do seu som de metrônomo
-  //   })
-  // );
-
-  const soundSrc = 'https://soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
+  // const soundSrc = 'https://soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
 
   const playSound = (src) => {
     const sound = new Howl({
@@ -28,7 +22,7 @@ function RandomGenerator() {
 
   const randomChords = (arrayChords) => {
     const index = Math.floor(Math.random() * arrayChords.length)
-    let variation = Math.floor(Math.random() * 2)
+    // let variation = Math.floor(Math.random() * 2)
     // console.log(arrayChords);
     let newChord = arrayChords[index]
     if (hasVariation && Math.random() > 0.5) {
@@ -56,22 +50,35 @@ function RandomGenerator() {
     }
     return randomChords(naturalChords)
   }
+  const intervalIdRef = useRef(null);
+  
+  const startTimer = () => {
+    if (intervalIdRef.current !== null) {
+      clearInterval(intervalIdRef.current);
+    }
+
+    const timerInterval = selectTimer * 1000;
+    const id = setInterval(() => {
+      playSound('/timerSound.wav');
+      chordsGenerator();
+    }, timerInterval);
+    intervalIdRef.current = id;
+  };
+
+  const stopTimer = () => {
+    if (intervalIdRef.current !== null) {
+      clearInterval(intervalIdRef.current);
+      intervalIdRef.current = null;
+    }
+  };
 
   useEffect(() => {
     if (hasStarted) {
-      let timer = selectTimer * 1000
-      const id = setInterval(() => {
-        playSound('/timerSound.wav')
-        chordsGenerator()
-      }, timer)
-      setIntervalId(id)
+      startTimer();
     } else {
-      if (intervalId) {
-        clearInterval(intervalId);
-        setIntervalId(null);
-      }
+      stopTimer();
     }
-  }, [hasStarted])
+  }, [hasStarted, selectChords, selectTimer, hasVariation, startTimer]);
 
   const handleClick = () => {
     setHasStarted(!hasStarted)
@@ -83,6 +90,10 @@ function RandomGenerator() {
     }
     if (selectName === 'timer') {
       setSelectTimer(event.target.value)
+    }
+    if (hasStarted) {
+      stopTimer();
+      startTimer()
     }
   }
 

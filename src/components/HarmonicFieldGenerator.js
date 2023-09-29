@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { allChords } from '../Datas';
 
 function HarmonicFieldGenerator() {
-    const [chord, setChord] = useState('C')
+    // const [chord, setChord] = useState('C')
     const [selectField, setSelectField] = useState(1)
     const [field, setField] = useState([])
 
