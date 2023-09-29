@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { naturalChords, flatChords, sharpChords } from '../Datas';
+import { Howl } from 'howler';
 
 function RandomGenerator() {
   const [chord, setChord] = useState('C')
@@ -8,6 +9,22 @@ function RandomGenerator() {
   const [hasStarted, setHasStarted] = useState(false)
   const [intervalId, setIntervalId] = useState(null)
   const [hasVariation, setHasVariation] = useState(true)
+
+  // const metronomeSound = useRef(
+  //   new Howl({
+  //     src: ['public/timerSound.wav'], // Substitua pelo caminho correto do seu som de metrônomo
+  //   })
+  // );
+
+  const soundSrc = 'https://soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
+
+  const playSound = (src) => {
+    const sound = new Howl({
+      src,
+      html5: true,
+    });
+    sound.play()
+  }
 
   const randomChords = (arrayChords) => {
     const index = Math.floor(Math.random() * arrayChords.length)
@@ -25,12 +42,6 @@ function RandomGenerator() {
     }
 
     setChord(newChord)
-    // console.log(newChord);
-    // if (newChord !== chord) {
-    //   return newChord
-    // } else {
-    //   return arrayChords[index+1]
-    // }
   }
 
   const chordsGenerator = () => {
@@ -50,18 +61,20 @@ function RandomGenerator() {
     if (hasStarted) {
       let timer = selectTimer * 1000
       const id = setInterval(() => {
+        playSound('/timerSound.wav')
         chordsGenerator()
       }, timer)
       setIntervalId(id)
+    } else {
+      if (intervalId) {
+        clearInterval(intervalId);
+        setIntervalId(null);
+      }
     }
   }, [hasStarted])
 
   const handleClick = () => {
     setHasStarted(!hasStarted)
-    if (intervalId) {
-      clearInterval(intervalId)
-      setIntervalId(null)
-    }
   }
 
   const handleSelect = (event, selectName) => {
@@ -77,33 +90,43 @@ function RandomGenerator() {
     setHasVariation(event.target.checked);
   };
 
+
+    
+
   return (
-    <div>
-      <h1>{chord}</h1>
-      <button onClick={handleClick}>
+    <div className='bg-zinc-900 container h-screen mx-auto flex flex-col items-center'>
+      <h1 className='text-9xl mt-40 font-extrabold text-emerald-500'>{chord}</h1>
+      <button onClick={handleClick} className='text-white font-bold bg-emerald-500 text-3xl p-2 my-32 w-[150px] rounded-sm'>
         {hasStarted ? 'STOP' : 'START'}
       </button>
 
-      <select value={selectChords} onChange={(event) => handleSelect(event, 'chords')}>
-        <option value='natural'>only natural</option>
-        <option value='flat'>flat</option>
-        <option value='sharp'>sharp</option>
-        <option value='all'>all</option>
-      </select>
+      <div className='flex flex-col items-center m-4 text-white text-lg font-bold'>
+        <label>ChordsList</label>
+        <select value={selectChords} className='bg-zinc-900 p-2' onChange={(event) => handleSelect(event, 'chords')}>
+          <option value='natural'>only natural</option>
+          <option value='flat'>flat</option>
+          <option value='sharp'>sharp</option>
+          <option value='all'>all</option>
+        </select>
+      </div>
 
-      <label for='variations'>Variations</label>
-      <input type='checkbox' name='variations' checked={hasVariation} onChange={handleCheckboxChange}/>
+      <div className='flex flex-col items-center mt-4 text-white text-lg font-bold'>
+        <label for='variations'>Variations</label>
+        <input type='checkbox' name='variations' checked={hasVariation} onChange={handleCheckboxChange} className='p-2'/>
+      </div>
 
-      <label for='timer'>Timer</label>
-      <select name='timer' value={selectTimer} onChange={(event) => handleSelect(event, 'timer')}>
-        <option value={1}>1</option>
-        <option value={2}>2</option>
-        <option value={3}>3</option>
-        <option value={4}>4</option>
-        <option value={5}>5</option>
-        <option value={6}>6</option>
-        <option value={7}>7</option>
-      </select>
+      <div className='flex flex-col items-center mt-4 text-white text-lg font-bold'>
+        <label for='timer'>Timer</label>
+        <select name='timer' className='bg-zinc-900 p-2' value={selectTimer} onChange={(event) => handleSelect(event, 'timer')}>
+          <option value={1}>1</option>
+          <option value={2}>2</option>
+          <option value={3}>3</option>
+          <option value={4}>4</option>
+          <option value={5}>5</option>
+          <option value={6}>6</option>
+          <option value={7}>7</option>
+        </select>
+      </div>
     </div>
   );
 }

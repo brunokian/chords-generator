@@ -38,6 +38,7 @@ function HarmonicFieldGenerator() {
                     <option key={index} value={index}>{note}</option>
                 ))}
             </select>
+
         </div>
     )
 }
