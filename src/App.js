@@ -1,26 +1,32 @@
 import React, { useState } from 'react';
 import Template from './Components/Template'
-import RandomGenerator from './Components/RandomGenerator';
+import RandomGenerator from './components/RandomGenerator';
 
 function App() {
-  var [state, setState] = useState({});
+  const [state, setState] = useState({
+    flatChords: true,
+    sharpChords: true,
+    speed: 2,
+  });
 
   const setStateValue = (newState) => {
-    Object.assign(state, newState);
-    setState({...state})
-  }
+    setState((prevState) => ({
+      ...prevState,
+      ...newState,
+    }));
+  };
 
   const buttonClick = () => {
-    if ("interval" in state){
+    if ("interval" in state) {
       clearInterval(state["interval"])
       delete state["interval"]
-    }else{
+    } else {
       state["interval"] = setInterval(() => {
-        if (state.hasStarted){
-          state["currentChord"] = RandomGenerator()
+        if (state.hasStarted) {
+          state["currentChord"] = RandomGenerator(state)
           setStateValue(state)
         }
-      }, (state["Chord changes speed"] ?? 2) * 1000)
+      }, (state["speed"] ?? 2) * 1000)
     }
     state["hasStarted"] = !state["hasStarted"]
     setStateValue(state)
@@ -28,11 +34,11 @@ function App() {
 
   return (
     <Template state={state} setState={setStateValue}>
-      <div className='bg-stone-700 py-10 rounded-lg w-[700px] shadow-inner'>
+      <div className='bg-stone-700 py-10 rounded-lg w-[500px] md:w-[650px] shadow-inner'>
         <div className='w-full flex flex-col'>
-          <div className='text-[184px] mx-auto'> {state.currentChord ?? "C"} </div>
+          <div className='text-[135px] md:text-[180px] mx-auto'> {state.currentChord ?? "C"} </div>
           <button className='bg-teal-400 text-white rounded-full py-4 px-10 font-bold mx-auto shadow' onClick={buttonClick}>
-            {state.hasStarted ? 'STOP': 'START'}
+            {state.hasStarted ? 'STOP' : 'START'}
           </button>
         </div>
       </div>

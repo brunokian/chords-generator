@@ -1,8 +1,8 @@
 import { naturalChords, flatChords, sharpChords } from '../Datas';
 
 
-function RandomGenerator() {
-  const selectChords = "all"
+function RandomGenerator( state ) {
+  // const selectChords = "all"
   const hasVariation = true
 
   const randomChords = (arrayChords) => {
@@ -22,16 +22,21 @@ function RandomGenerator() {
   }
 
   const chordsGenerator = () => {
-    if (selectChords === 'flat') {
-      return randomChords(naturalChords.concat(flatChords))
+    try {
+      
+      if (state["flatChords"] && state["sharpChords"]) {
+        return randomChords(naturalChords.concat(sharpChords.concat(flatChords)))
+      }
+      if (state["flatChords"]) {
+        return randomChords(naturalChords.concat(flatChords))
+      }
+      if (state["sharpChords"]) {
+        return randomChords(naturalChords.concat(sharpChords))
+      }
+      return randomChords(naturalChords)
+    } catch (error) {
+      console.log('erro ao tentar ler o estado');
     }
-    if (selectChords === 'sharp') {
-      return randomChords(naturalChords.concat(sharpChords))
-    }
-    if (selectChords === 'all') {
-      return randomChords(naturalChords.concat(sharpChords.concat(flatChords)))
-    }
-    return randomChords(naturalChords)
   }
 
   return chordsGenerator()

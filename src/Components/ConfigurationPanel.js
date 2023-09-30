@@ -1,20 +1,20 @@
-import SelectMenu from './Inputs/SelectMenu';
+// import SelectMenu from './Inputs/SelectMenu';
 import Toggle from './Inputs/Toggle';
 import Slider from './Inputs/Slider';
 import {allChords} from '../Datas';
 
 
 export default function ConfigurationPanel({state, setState, children}) {
-    const keys = allChords.reduce((a, v) => ({ ...a, [v]: v}), {"Random":""})
+    // const keys = allChords.reduce((a, v) => ({ ...a, [v]: v}), {"Random":""})
 
     return (
-        <div className='bg-stone-700 rounded-lg p-2 my-4 mx-auto lg:w-[30%] md:w-[55%] w-full'>
-            <div className='rounded md:p-2  text-sm'>
-                <Slider title="Chord changes speed" state={state} setState={setState} />
-                <Toggle title="Sharp Chords" state={state} setState={setState} />
-                <Toggle title="Flat Chords" state={state} setState={setState} />
+        <div className='bg-stone-700 rounded-lg p-2 my-4 mx-auto w-[400px]'>
+            <div className='rounded md:p-2 text-sm'>
+                <Slider title="speed" state={state} setState={setState} />
+                <Toggle title="sharpChords" state={state} setState={setState} />
+                <Toggle title="flatChords" state={state} setState={setState} />
 
-                <div className='bg-stone-600 p-2 rounded'>
+                {/* <div className='bg-stone-600 p-2 rounded'>
                     <SelectMenu title="Choose the Key" options={keys} state={state} setState={setState} />
                     {state["Choose the Key"] && state["Choose the Key"] !== "Random" ? (
                         <>
@@ -25,7 +25,7 @@ export default function ConfigurationPanel({state, setState, children}) {
                             }}/>
                         </>
                     ):("")}
-                </div>
+                </div> */}
             </div>
         </div>
     );

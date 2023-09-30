@@ -8,7 +8,7 @@ export default function Template({state, setState, children}) {
 			<div className='h-screen w-screen flex items-center'>
 				<HistoryPanel state={state} setState={setState}/>
 				<div className='w-full h-full flex flex-col'>
-            		<div className='m-auto'>{children}</div>
+            		<div className='my-[100px] mx-auto'>{children}</div>
 					{!state.hasStarted ? (
 						<ConfigurationPanel state={state} setState={setState}/>
 					):("")}
