@@ -4,6 +4,7 @@ import Slider from './Inputs/Slider';
 import {allChords} from '../Datas';
 
 
+
 export default function ConfigurationPanel({state, setState, children}) {
     // const keys = allChords.reduce((a, v) => ({ ...a, [v]: v}), {"Random":""})
 
