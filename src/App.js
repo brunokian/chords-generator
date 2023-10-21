@@ -34,10 +34,10 @@ function App() {
 
   return (
     <Template state={state} setState={setStateValue}>
-      <div className='bg-stone-700 py-10 rounded-lg w-[400px] md:w-[650px] sm:w-[300px] shadow-inner'>
+      <div className='bg-zinc-800 py-10 rounded-lg w-[350px] md:w-[700px] shadow-inner'>
         <div className='w-full flex flex-col'>
           <div className='text-[100px] md:text-[180px] sm:text-[135px] mx-auto'> {state.currentChord ?? "C"} </div>
-          <button className='bg-teal-400 text-white rounded-full py-4 px-10 font-bold mx-auto shadow' onClick={buttonClick}>
+          <button className='bg-emerald-500 text-white rounded-full py-4 px-10 font-bold mx-auto shadow' onClick={buttonClick}>
             {state.hasStarted ? 'STOP' : 'START'}
           </button>
         </div>

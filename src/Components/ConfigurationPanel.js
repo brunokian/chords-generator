@@ -8,7 +8,7 @@ export default function ConfigurationPanel({state, setState, children}) {
     // const keys = allChords.reduce((a, v) => ({ ...a, [v]: v}), {"Random":""})
 
     return (
-        <div className='bg-stone-700 rounded-lg p-2 my-4 mx-auto w-[400px]'>
+        <div className='bg-zinc-800 rounded-lg p-2 my-4 mx-auto w-[300px] md:w-[700px]'>
             <div className='rounded md:p-2 text-sm'>
                 <Slider title="speed" state={state} setState={setState} />
                 <Toggle title="sharpChords" state={state} setState={setState} />
