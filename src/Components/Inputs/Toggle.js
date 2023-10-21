@@ -15,7 +15,7 @@ export default function Toggle({state, setState, title}) {
 
                 {(state[title]) ? (
                     <>
-                        <div className="block bg-green-400 w-10 h-6 rounded-full"></div>
+                        <div className="block bg-emerald-500 w-10 h-6 rounded-full"></div>
                         <div className="dot absolute top-1 left-5 bg-slate-50 w-4 h-4 rounded-full transition"></div>
                     </>
                 ):(

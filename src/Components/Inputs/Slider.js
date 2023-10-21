@@ -3,7 +3,7 @@ import { handleChange } from "../../utils";
 
 export default function Slider({state, setState, title}) {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col ">
             <div className="mb-2">{title}</div>
             <div>
                 <input 
@@ -14,8 +14,9 @@ export default function Slider({state, setState, title}) {
                     max="8"
                     step="0.1"
                     defaultValue={state["speed"]}
-                    className="w-11/12 h-4 bg-stone-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-11/12 h-4 rounded-lg appearance-none cursor-pointer"
                 />
+
                 <span className="pl-1">{state[title]}</span>
             </div>
         </div>
