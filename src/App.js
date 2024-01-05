@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Template from './Components/Template'
-import RandomGenerator from './Components/RandomGenerator';
+import RandomGenerator from './Functions/RandomGenerator';
 import { Howl } from 'howler';
 
 function App() {
