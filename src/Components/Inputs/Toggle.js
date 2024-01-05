@@ -1,4 +1,4 @@
-import { handleCheckboxChange } from "../../utils";
+import { handleCheckboxChange } from "../../Utils";
 
 
 export default function Toggle({state, setState, title}) {

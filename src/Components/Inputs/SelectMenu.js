@@ -1,4 +1,4 @@
-import { handleChange } from "../../utils";
+import { handleChange } from "../../Utils";
 
 
 export default function SelectMenu({state, setState, title, options}) {
