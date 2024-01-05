@@ -5,7 +5,13 @@ let flatNotes = ['Db', 'Eb', 'Gb', 'Ab', 'Bb']
 let allNotes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 let scales = {
     "Natural": ["1", "2", "b3", "4", "5", "b6", "b7"],
-    "Bepop": ["1", "7", "b7", "6", "5", "4", "3", "2"],
+    "Bepop": ["1", "2", "3", "4", "5", "6", "b7", "7"],
+    "Harmonic": ["1", "2", "3", "4", "5", "b6", "7"],
+}
+let voicings = {
+    "Thirds": "Thirds",
+    "Fourths": "Fourths",
+    "Quintals": "Quintals",
 }
 
 export {
@@ -13,5 +19,6 @@ export {
     sharpNotes,
     flatNotes,
     allNotes,
-    scales
+    scales,
+    voicings
 }
