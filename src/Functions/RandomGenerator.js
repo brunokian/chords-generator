@@ -1,4 +1,4 @@
-import { naturalChords, flatChords, sharpChords } from '../Datas';
+import { naturalChords, flatChords, sharpChords } from '../Definitions';
 
 
 function RandomGenerator( state ) {

@@ -1,4 +1,4 @@
-import { allChords } from '../Datas';
+import { allChords } from '../Definitions';
 
 function HarmonicFieldGenerator() {
     const [chord, setChord] = useState('C')
