@@ -1,4 +1,3 @@
-import HistoryPanel from './HistoryPanel';
 import ConfigurationPanel from './ConfigurationPanel';
 
 

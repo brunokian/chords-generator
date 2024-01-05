@@ -1,8 +1,6 @@
 // import SelectMenu from './Inputs/SelectMenu';
 import Toggle from './Inputs/Toggle';
 import Slider from './Inputs/Slider';
-import {allChords} from '../Datas';
-
 
 
 export default function ConfigurationPanel({state, setState, children}) {
