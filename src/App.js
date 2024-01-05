@@ -5,9 +5,9 @@ import { Howl } from 'howler';
 
 function App() {
   const [state, setState] = useState({
-    flatChords: true,
-    sharpChords: true,
-    speed: 2,
+    "Flat Chords": true,
+    "Sharp Chords": true,
+    "Speed in Seconds": 2,
   });
 
   const setStateValue = (newState) => {
@@ -36,7 +36,7 @@ function App() {
           setStateValue(state)
           playSound('/timerSound.wav')
         }
-      }, (state["speed"] ?? 2) * 1000)
+      }, state["Speed in Seconds"] * 1000)
     }
     state["hasStarted"] = !state["hasStarted"]
     setStateValue(state)

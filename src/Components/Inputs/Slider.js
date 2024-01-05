@@ -13,7 +13,7 @@ export default function Slider({state, setState, title}) {
                     min="0.5"
                     max="8"
                     step="0.1"
-                    defaultValue={state["speed"]}
+                    defaultValue={state[title]}
                     className="w-11/12 h-4 rounded-lg appearance-none cursor-pointer"
                 />
 

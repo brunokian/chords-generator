@@ -9,9 +9,9 @@ export default function ConfigurationPanel({state, setState, children}) {
     return (
         <div className='bg-zinc-800 rounded-lg p-2 my-4 mx-auto w-[300px] md:w-[700px]'>
             <div className='rounded md:p-2 text-sm'>
-                <Slider title="speed" state={state} setState={setState} />
-                <Toggle title="sharpChords" state={state} setState={setState} />
-                <Toggle title="flatChords" state={state} setState={setState} />
+                <Slider title="Speed in Seconds" state={state} setState={setState} />
+                <Toggle title="Sharp Chords" state={state} setState={setState} />
+                <Toggle title="Flat Chords" state={state} setState={setState} />
 
                 {/* <div className='bg-stone-600 p-2 rounded'>
                     <SelectMenu title="Choose the Key" options={keys} state={state} setState={setState} />

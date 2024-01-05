@@ -24,13 +24,13 @@ function RandomGenerator( state ) {
   const chordsGenerator = () => {
     try {
       
-      if (state["flatChords"] && state["sharpChords"]) {
+      if (state["Flat Chords"] && state["Sharp Chords"]) {
         return randomChords(naturalChords.concat(sharpChords.concat(flatChords)))
       }
-      if (state["flatChords"]) {
+      if (state["Flat Chords"]) {
         return randomChords(naturalChords.concat(flatChords))
       }
-      if (state["sharpChords"]) {
+      if (state["Sharp Chords"]) {
         return randomChords(naturalChords.concat(sharpChords))
       }
       return randomChords(naturalChords)
