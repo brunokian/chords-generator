@@ -6,7 +6,7 @@ export default function Slider({state, setState, title, min="0.5", max="8", step
         <div className="flex flex-col ">
             <div className="mb-2">{title}</div>
             <div>
-                <input 
+                <input
                     onChange={(event) => handleChange(event, title, state, setState)}
                     id="disabled-range"
                     type="range"
