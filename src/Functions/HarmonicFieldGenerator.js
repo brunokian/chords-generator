@@ -1,4 +1,4 @@
-import { allChords } from '../Definitions';
+import { allNotes } from '../Definitions';
 
 function HarmonicFieldGenerator() {
     const [chord, setChord] = useState('C')
@@ -6,7 +6,7 @@ function HarmonicFieldGenerator() {
     const [field, setField] = useState([])
 
     const majorHarmonicField = (n) => {
-        let a = allChords.slice(n).concat(allChords.slice(0, n))
+        let a = allNotes.slice(n).concat(allNotes.slice(0, n))
         let b = [a[0], a[2], a[4], a[5], a[7], a[9], a[11]]
         b[0] += '7M'
         b[1] += 'm7'

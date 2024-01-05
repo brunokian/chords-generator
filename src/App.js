@@ -8,6 +8,8 @@ function App() {
     "Flat Chords": true,
     "Sharp Chords": true,
     "Speed in Seconds": 2,
+    "Mode": "Random Generator",
+    "Key Change Speed": 0,
   });
 
   const setStateValue = (newState) => {
