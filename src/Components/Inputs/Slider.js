@@ -8,7 +8,7 @@ export default function Slider({state, setState, title, min="0.5", max="8", step
             <div>
                 <input
                     onChange={(event) => handleChange(event, title, state, setState)}
-                    id="disabled-range"
+                    id={"range-" + title.replaceAll(" ", "")}
                     type="range"
                     min={min}
                     max={max}

@@ -3,6 +3,7 @@ import Template from './Components/Template'
 import RandomGenerator from './Functions/RandomGenerator';
 import { Howl } from 'howler';
 
+
 function App() {
   const [state, setState] = useState({
     "Flat Chords": true,
