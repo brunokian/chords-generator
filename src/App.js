@@ -47,10 +47,7 @@ function App() {
     <Template state={state} setState={setStateValue}>
       <div className='bg-zinc-800 py-10 rounded-lg w-[350px] md:w-[700px] shadow-inner overflow-hidden'>
         <div className='w-full flex flex-col overflow-hidden'>
-          {state.hasStarted ?
-            <div className='text-[100px] md:text-[180px] sm:text-[135px] mx-auto overflow-hidden'> {state.currentChord ?? "C"} </div>
-          :""}
-
+          <div className='text-[100px] md:text-[180px] sm:text-[135px] mx-auto overflow-hidden'> {state.currentChord ?? "C"} </div>
           <button className='bg-emerald-500 text-white rounded-xl py-4 px-10 font-bold mx-auto shadow' onClick={buttonClick}>
             {state.hasStarted ? 'STOP' : 'START'}
           </button>
