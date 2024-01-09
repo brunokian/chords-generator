@@ -1,14 +1,26 @@
 import Toggle from './Inputs/Toggle';
 import Slider from './Inputs/Slider';
 import SelectMenu from './Inputs/SelectMenu';
-import { allNotes, scales } from '../Definitions';
+import { allNotes, scales, relatives, chordTypes } from '../Definitions';
 
 
-export default function ConfigurationPanel({state, setState, children}) {
+export default function ConfigurationPanel({state, setState}) {
     const keys = allNotes.reduce((a, v) => ({ ...a, [v]: v}), {"Random":""})
     const options = {
         "Random Generator": "Random Generator",
         "Scale Generator": "Scale Generator",
+        "Relative Notes": "Relative Notes",
+    }
+
+    const ChordTypes = () => {
+        return (
+            <>
+                <Slider title="Tonic Inversion(%)" state={state} setState={setState} min='0' max='100' step='1' />
+                {chordTypes.map((type) => {
+                    return <Toggle title={"Chord type: " + type} state={state} setState={setState} />
+                })}
+            </>
+        )
     }
 
     const ModeOption = ({ option }) => {
@@ -18,6 +30,7 @@ export default function ConfigurationPanel({state, setState, children}) {
                     <Slider title="Speed in Seconds" state={state} setState={setState} />
                     <Toggle title="Sharp Chords" state={state} setState={setState} />
                     <Toggle title="Flat Chords" state={state} setState={setState} />
+                    <ChordTypes />
                 </>
             ),
             "Scale Generator": (
@@ -29,11 +42,18 @@ export default function ConfigurationPanel({state, setState, children}) {
                             <SelectMenu title="Choose the chords scale" state={state} setState={setState} options={scales} />
                         </>
                     ):("")}
+                    <ChordTypes />
                 </>
             ),
+            "Relative Notes": (
+                relatives.map((relative) => {
+                    return <Toggle title={"Relative: " + relative} state={state} setState={setState} />
+                })
+            )
         }
         return options[option]
     }
+
 
     return (
         <div className='bg-zinc-800 rounded-lg p-2 my-4 mx-auto w-[300px] md:w-[700px]'>
