@@ -5,12 +5,12 @@ export default function Toggle({state, setState, title}) {
     return (
       <label htmlFor={title} className="flex items-center cursor-pointer my-3">
           <div className="relative">
-                <input 
-                    onChange={(event) => handleCheckboxChange(event, title, state, setState)} 
+                <input
+                    onChange={(event) => handleCheckboxChange(event, title, state, setState)}
                     type="checkbox"
-                    checked={state[title]} 
-                    id={title} 
-                    className="sr-only" 
+                    checked={state[title]}
+                    id={title.replaceAll(" ", "")}
+                    className="sr-only"
                 />
 
                 {(state[title]) ? (
