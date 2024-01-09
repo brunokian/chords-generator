@@ -1,8 +1,7 @@
 import { naturalNotes, flatNotes, sharpNotes } from '../Definitions';
 
 
-function RandomGenerator( state ) {
-  // const selectChords = "all"
+function RandomGenerator(state) {
   const hasVariation = true
 
   const randomChords = (arrayChords) => {

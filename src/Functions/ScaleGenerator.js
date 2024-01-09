@@ -1,4 +1,4 @@
-import { allNotes } from '../Definitions';
+//import { allNotes } from '../Definitions';
 
 
 export default function ScaleGenerator(key, scale, voicing) {
