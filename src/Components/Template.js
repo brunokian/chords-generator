@@ -7,7 +7,7 @@ export default function Template({state, setState, children}) {
 			<div className='h-screen w-screen flex justify-center'>
 				{/* <HistoryPanel state={state} setState={setState}/> */}
 				<div className='w-[1600px] bg-zinc-900 h-full flex flex-col'>
-            		<div className='my-auto mx-auto'>{children}</div>
+            		<div className='my-auto mx-auto overflow-hidden'>{children}</div>
 					{!state.hasStarted ? (
 						<ConfigurationPanel state={state} setState={setState}/>
 					):("")}
