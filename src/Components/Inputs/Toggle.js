@@ -3,7 +3,7 @@ import { handleCheckboxChange } from "../../Utils";
 
 export default function Toggle({state, setState, title}) {
     return (
-      <label htmlFor={title} className="flex items-center cursor-pointer my-3">
+      <label className="flex items-center cursor-pointer my-3">
           <div className="relative">
                 <input
                     onChange={(event) => handleCheckboxChange(event, title, state, setState)}

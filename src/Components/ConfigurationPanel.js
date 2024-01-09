@@ -1,57 +1,13 @@
-import Toggle from './Inputs/Toggle';
-import Slider from './Inputs/Slider';
+
 import SelectMenu from './Inputs/SelectMenu';
-import { allNotes, scales, relatives, chordTypes } from '../Definitions';
+import ModeOption from './Modes'
 
 
 export default function ConfigurationPanel({state, setState}) {
-    const keys = allNotes.reduce((a, v) => ({ ...a, [v]: v}), {"Random":""})
     const options = {
         "Random Generator": "Random Generator",
         "Scale Generator": "Scale Generator",
         "Relative Notes": "Relative Notes",
-    }
-
-    const ChordTypes = () => {
-        return (
-            <>
-                <Slider title="Tonic Inversion(%)" state={state} setState={setState} min='0' max='100' step='1' />
-                {chordTypes.map((type, index) => {
-                    return <Toggle title={"Chord type: " + type} state={state} setState={setState} key={index} />
-                })}
-            </>
-        )
-    }
-
-    const ModeOption = ({ option }) => {
-        const options = {
-            "Random Generator": (
-                <>
-                    <Slider title="Speed in Seconds" state={state} setState={setState} />
-                    <Toggle title="Sharp Chords" state={state} setState={setState} />
-                    <Toggle title="Flat Chords" state={state} setState={setState} />
-                    <ChordTypes />
-                </>
-            ),
-            "Scale Generator": (
-                <>
-                    <SelectMenu title="Choose the Key" options={keys} state={state} setState={setState} />
-                    {state["Choose the Key"] && state["Choose the Key"] !== "Random" ? (
-                        <>
-                            <Slider title="Key Change Speed" state={state} setState={setState} />
-                            <SelectMenu title="Choose the chords scale" state={state} setState={setState} options={scales} />
-                        </>
-                    ):("")}
-                    <ChordTypes />
-                </>
-            ),
-            "Relative Notes": (
-                relatives.map((relative, index) => {
-                    return <Toggle title={"Relative: " + relative} state={state} setState={setState} key={index} />
-                })
-            )
-        }
-        return options[option]
     }
 
     return (
@@ -65,7 +21,7 @@ export default function ConfigurationPanel({state, setState}) {
                     <span className="flex-shrink mx-4 text-gray-400">Configuration</span>
                     <div className="flex-grow border-t border-gray-400"></div>
                 </div>
-                <ModeOption option={state["Mode"]}/>
+                <ModeOption state={state} setState={setState} />
             </div>
         </div>
     );

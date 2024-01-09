@@ -1,3 +1,13 @@
+import { Howl } from 'howler';
+
+
+const playSound = (src) => {
+    const sound = new Howl({
+        src,
+        html5: true,
+    });
+    sound.play()
+}
 
 const handleChange = (event, key, state, setState) => {
     state[key] = event.target.value
@@ -18,5 +28,6 @@ const handleCheckboxChange = (event, key, state, setState) => {
 export {
     handleChange,
     handleCheckboxChange,
-    handleButton
+    handleButton,
+    playSound
 }
