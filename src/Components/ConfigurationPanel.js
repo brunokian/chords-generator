@@ -16,8 +16,8 @@ export default function ConfigurationPanel({state, setState}) {
         return (
             <>
                 <Slider title="Tonic Inversion(%)" state={state} setState={setState} min='0' max='100' step='1' />
-                {chordTypes.map((type) => {
-                    return <Toggle title={"Chord type: " + type} state={state} setState={setState} />
+                {chordTypes.map((type, index) => {
+                    return <Toggle title={"Chord type: " + type} state={state} setState={setState} key={index} />
                 })}
             </>
         )
@@ -46,14 +46,13 @@ export default function ConfigurationPanel({state, setState}) {
                 </>
             ),
             "Relative Notes": (
-                relatives.map((relative) => {
-                    return <Toggle title={"Relative: " + relative} state={state} setState={setState} />
+                relatives.map((relative, index) => {
+                    return <Toggle title={"Relative: " + relative} state={state} setState={setState} key={index} />
                 })
             )
         }
         return options[option]
     }
-
 
     return (
         <div className='bg-zinc-800 rounded-lg p-2 my-4 mx-auto w-[300px] md:w-[700px]'>
