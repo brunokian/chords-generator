@@ -6,8 +6,8 @@ import { scales, relatives, chordTypes, allNotes } from '../Definitions';
 
 const ChordTypes = ({state, setState}) => {
     return (<>
-        <Toggle title={"Custom Options"} state={state} setState={setState}/>
-        {state["Custom Options"] ?
+        <Toggle title={"Show Custom Options"} state={state} setState={setState}/>
+        {state["Show Custom Options"] ?
             <>
                 <Slider title="Tonic Inversion(%)" state={state} setState={setState} min='0' max='100' step='1' />
                 {chordTypes.map((type, index) => {

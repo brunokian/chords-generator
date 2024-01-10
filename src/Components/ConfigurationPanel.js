@@ -11,7 +11,7 @@ export default function ConfigurationPanel({state, setState}) {
     }
 
     return (
-        <div className='bg-zinc-800 rounded-lg p-2 my-4 mx-auto w-[300px] md:w-[700px]'>
+        <div className='bg-zinc-800 rounded-lg p-2 max-h-[50%] my-4 mx-auto w-[300px] md:w-[700px]'>
             <div className='rounded md:p-2 text-sm'>
                 <div className='text-lg'>
                     <SelectMenu title="Mode" state={state} setState={setState} options={options} />
