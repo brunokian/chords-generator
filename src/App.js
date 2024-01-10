@@ -6,9 +6,6 @@ import { chordTypes, relatives } from './Definitions';
 
 
 function App() {
-  // const types = chordTypes.map((type) => {
-  //   return {"Chord type: ".concat(type): true}
-  // })
   const [state, setState] = useState({
     "Flat Chords": true,
     "Sharp Chords": true,
@@ -30,18 +27,30 @@ function App() {
     }));
   };
 
+  const intervalUpdate = () => {
+    if (state.hasStarted)
+    {
+      state["IntervalProgress"] = state["IntervalProgress"].concat(Array(Math.floor(10 / state["Speed in Seconds"])).fill(1))
+      if (state["IntervalProgress"].length > 100)
+      {
+        state["IntervalProgress"] = Array(Math.floor(10 / state["Speed in Seconds"])).fill(1)
+        state["currentChord"] = RandomGenerator(state)
+        playSound('/timerSound.wav')
+      }
+      setStateValue(state)
+    }
+  }
+
   const buttonClick = () => {
-    if ("interval" in state) {
+    if ("interval" in state)
+    {
+      state["IntervalProgress"] = []
       clearInterval(state["interval"])
       delete state["interval"]
-    } else {
-      state["interval"] = setInterval(() => {
-        if (state.hasStarted) {
-          state["currentChord"] = RandomGenerator(state)
-          setStateValue(state)
-          playSound('/timerSound.wav')
-        }
-      }, state["Speed in Seconds"] * 1000)
+    }
+    else
+    {
+      state["interval"] = setInterval(intervalUpdate, 100)
     }
     state["hasStarted"] = !state["hasStarted"]
     setStateValue(state)
@@ -55,6 +64,11 @@ function App() {
           <button className='bg-emerald-500 text-white rounded-xl py-4 px-10 font-bold mx-auto shadow' onClick={buttonClick}>
             {state.hasStarted ? 'STOP' : 'START'}
           </button>
+          <div className='bg-white align-bottom w-full mt-5 h-2 flex flex-row'>
+              {state["IntervalProgress"].map((_, index) => {
+                return <div key={index} className='bg-cyan-300 h-full w-[1%] animate-[increase-width_0.1s_linear]'></div>
+              })}
+          </div>
         </div>
       </div>
     </Template>

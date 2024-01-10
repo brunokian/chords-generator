@@ -19,3 +19,8 @@ code {
 * {
   overflow-x: hidden;
 }
+
+@keyframes increase-width {
+  from {width: 0%;}
+  to {width: 1%;}
+}

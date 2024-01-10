@@ -5,6 +5,7 @@ let flatNotes = ['Db', 'Eb', 'Gb', 'Ab', 'Bb']
 let allNotes = naturalNotes.concat(flatNotes, sharpNotes)
 let relatives = ['2b', '2', '3b', '3', '4', '5b', '5', '5#', '6b', '6', '7b', '7', '7#', '9b', '9', '11', '13b', '13']
 let chordTypes = ['m', '4', '5-', '5+', '6', '7', '7M', '9b', '9', '11', '11+', '13-', '13', '°']
+//let uniqueChordTypes = ['m', '4', '5-', '5+', '6', '7', '7M', '9b', '9', '11', '11+', '13-', '13', '°']
 
 let scales = {
     "Natural":  ["1", "2", "b3", "4", "5", "b6", "b7"],
