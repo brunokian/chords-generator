@@ -13,8 +13,7 @@ let chordTypes = () => {
 }
 
 let initialState = {
-    "Flat Chords": true,
-    "Sharp Chords": true,
+    "currentChord": "C",
     "Relative Notes": false,
     "Show Custom Options": false,
     "Mode": "Random Generator",

@@ -7,7 +7,7 @@ import { scales, allNotes } from '../Definitions';
 
 const ChordTypes = ({state, setState}) => {
     return (
-        <div className='bg-zinc-700 px-2 rounded-lg'>
+        <div className='bg-zinc-700 px-2 py-1 my-4 rounded-lg'>
             <Toggle title={"Show Custom Options"} state={state} setState={setState}/>
             {state["Show Custom Options"] ?
                 <>
@@ -23,9 +23,6 @@ export default function ModeOption({ state, setState }){
     const keys = allNotes.reduce((a, v) => ({ ...a, [v]: v}), {"Random":""})
     const options = {
         "Random Generator": (<>
-            <Slider title="Speed in Seconds" state={state} setState={setState} />
-            <Toggle title="Sharp Chords" state={state} setState={setState} />
-            <Toggle title="Flat Chords" state={state} setState={setState} />
             <ChordTypes state={state} setState={setState} />
         </>),
         "Scale Generator": (<>
