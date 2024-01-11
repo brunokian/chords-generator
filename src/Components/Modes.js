@@ -1,7 +1,8 @@
 import Toggle from './Inputs/Toggle';
 import Slider from './Inputs/Slider';
 import SelectMenu from './Inputs/SelectMenu'
-import { scales, relatives, chordTypes, allNotes } from '../Definitions';
+import TagBox from './Inputs/TagBox'
+import { scales, allNotes } from '../Definitions';
 
 
 const ChordTypes = ({state, setState}) => {
@@ -10,9 +11,7 @@ const ChordTypes = ({state, setState}) => {
         {state["Show Custom Options"] ?
             <>
                 <Slider title="Tonic Inversion(%)" state={state} setState={setState} min='0' max='100' step='1' />
-                {chordTypes.map((type, index) => {
-                    return <Toggle title={"Chord type: " + type} state={state} setState={setState} key={index} />
-                })}
+                <TagBox title="Selected Chord Types" state={state} setState={setState} />
             </>
         :""}
     </>)
@@ -35,11 +34,7 @@ export default function ModeOption({ state, setState }){
             </>):("")}
             <ChordTypes state={state} setState={setState} />
         </>),
-        "Relative Notes": (
-            relatives.map((relative, index) => {
-                return <Toggle title={"Relative: " + relative} state={state} setState={setState} key={index} />
-            })
-        )
+        "Relative Notes": <TagBox title="Selected Relative Notes" state={state} setState={setState} />
     }
     return options[state["Mode"]]
 }

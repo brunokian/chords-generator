@@ -1,6 +1,5 @@
-
-import SelectMenu from './Inputs/SelectMenu';
 import ModeOption from './Modes'
+import SelectMenu from './Inputs/SelectMenu'
 
 
 export default function ConfigurationPanel({state, setState}) {

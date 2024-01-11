@@ -16,8 +16,8 @@ function App() {
     "Key Change Speed": 0,
     "Tonic Inversion(%)": 0,
     "IntervalProgress": [],
-    ...chordTypes.reduce((a, v) => ({...a, [`Chord type: ${v}`]: true}), {}),
-    ...relatives.reduce((a, v) => ({...a, [`Relative: ${v}`]: false}), {}),
+    "Selected Chord Types": {"true": [...chordTypes], "false": []},
+    "Selected Relative Notes": {"true": [], "false": [...relatives]},
   });
 
   const setStateValue = (newState) => {
