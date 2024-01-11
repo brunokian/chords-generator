@@ -6,15 +6,17 @@ import { scales, allNotes } from '../Definitions';
 
 
 const ChordTypes = ({state, setState}) => {
-    return (<>
-        <Toggle title={"Show Custom Options"} state={state} setState={setState}/>
-        {state["Show Custom Options"] ?
-            <>
-                <Slider title="Tonic Inversion(%)" state={state} setState={setState} min='0' max='100' step='1' />
-                <TagBox title="Selected Chord Types" state={state} setState={setState} />
-            </>
-        :""}
-    </>)
+    return (
+        <div className='bg-zinc-700 px-2 rounded-lg'>
+            <Toggle title={"Show Custom Options"} state={state} setState={setState}/>
+            {state["Show Custom Options"] ?
+                <>
+                    <Slider title="Tonic Inversion(%)" state={state} setState={setState} min='0' max='100' step='1' />
+                    <TagBox title="Selected Chord Types" state={state} setState={setState} />
+                </>
+            :""}
+        </div>
+    )
 }
 
 export default function ModeOption({ state, setState }){
@@ -34,7 +36,7 @@ export default function ModeOption({ state, setState }){
             </>):("")}
             <ChordTypes state={state} setState={setState} />
         </>),
-        "Relative Notes": <TagBox title="Selected Relative Notes" state={state} setState={setState} />
+        "Relative Notes": <TagBox title="Selected Relative Notes" state={state} setState={setState} backgroundClass="bg-zinc-700" />
     }
     return options[state["Mode"]]
 }

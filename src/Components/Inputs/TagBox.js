@@ -1,5 +1,5 @@
 
-export default function TagBox({state, setState, title}) {
+export default function TagBox({state, setState, title, backgroundClass="bg-zinc-800"}) {
     const handleClick = (item, index, is_active) => {
         state[title][is_active].splice(index, 1)
         if (is_active === "true"){
@@ -25,15 +25,17 @@ export default function TagBox({state, setState, title}) {
         })
     }
 
-    return (<>
-        <div className="my-3">{title}</div>
-        <div className="flex flex-row">
-            <div className="rounded bg-zinc-700 h-42 p-3 w-full flex flex-row flex-wrap mr-2">
-                <GetItems is_active="true" />
+    return (
+        <>
+            <div className="my-1">{title}</div>
+            <div className="flex flex-row pb-2">
+                <div className={`rounded ${backgroundClass} h-42 p-3 w-full flex flex-row flex-wrap mr-2`}>
+                    <GetItems is_active="true" />
+                </div>
+                <div className={`rounded ${backgroundClass} h-42 p-3 w-full flex flex-row flex-wrap`}>
+                    <GetItems is_active="false" />
+                </div>
             </div>
-            <div className="rounded bg-zinc-700 h-42 p-3 w-full flex flex-row flex-wrap">
-                <GetItems is_active="false" />
-            </div>
-        </div>
-    </>);
+        </>
+    )
 };
