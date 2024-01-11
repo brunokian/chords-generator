@@ -2,23 +2,10 @@ import React, { useState } from 'react';
 import Template from './Components/Template'
 import RandomGenerator from './Functions/RandomGenerator';
 import { playSound } from './Utils'
-import { chordTypes, relatives } from './Definitions';
-
+import { initialState } from './Config'
 
 function App() {
-  const [state, setState] = useState({
-    "Flat Chords": true,
-    "Sharp Chords": true,
-    "Relative Notes": false,
-    "Show Custom Options": false,
-    "Mode": "Random Generator",
-    "Speed in Seconds": 2,
-    "Key Change Speed": 0,
-    "Tonic Inversion(%)": 0,
-    "IntervalProgress": [],
-    "Selected Chord Types": {"true": [...chordTypes], "false": []},
-    "Selected Relative Notes": {"true": [], "false": [...relatives]},
-  });
+  const [state, setState] = useState({...initialState});
 
   const setStateValue = (newState) => {
     setState((prevState) => ({
