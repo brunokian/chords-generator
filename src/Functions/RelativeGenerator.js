@@ -1,10 +1,24 @@
-import { allNotes, relatives } from '../Definitions';
+import { allNotes, intervals, relatives } from '../Definitions';
 
 
 export default function relativeGenerator(state)
 {
-    const note = allNotes[Math.floor(Math.random() * allNotes.length)]
-    const relative = relatives[Math.floor(Math.random() * relatives.length)]
-    return `${relative} (${note})`
-    //Examples: E, G5+, E, A7M, Bbm, F#4/6, D7M/F#, Fº(13-), D°, Fm(5-), Em7(11), A7(9-/13), Em7M(9-/11/13)
+    var note = state["lastRelativeNote"]
+    if (!("lastRelativeNote" in state)){
+        const notes = [].concat(...Object.keys(allNotes).map(key => allNotes[key]))
+        note = notes[Math.floor(Math.random() * notes.length)]
+    }
+    
+    const selectedRelatives = state["Selected Relative Notes"]["true"]
+    const relative = selectedRelatives[Math.floor(Math.random() * selectedRelatives.length)]
+
+    const start = Object.keys(allNotes).filter(key => allNotes[key].includes(note))
+    const interval = Object.keys(intervals).filter(key => intervals[key].includes(relatives[relative][0]))[0]
+
+    const relativeNotes = allNotes[(parseInt(start) + parseInt(interval) + 1) % 12]
+    const relativeNote = relativeNotes[Math.floor(Math.random() * relativeNotes.length)]
+
+    state["lastRelativeNote"] = relativeNote
+
+    return `${note} (${relative})`
 }

@@ -1,4 +1,4 @@
-import { intervals, relatives } from './Definitions';
+import { intervals, relatives, variationOrder } from './Definitions';
 
 let chordTypes = () => {
     const types = []
@@ -9,7 +9,7 @@ let chordTypes = () => {
             }
         }
     }
-    return types
+    return types.sort((a, b) => variationOrder.indexOf(a) - variationOrder.indexOf(b))
 }
 
 let initialState = {
@@ -20,9 +20,10 @@ let initialState = {
     "Speed in Seconds": 2,
     "Key Change Speed": 0,
     "Tonic Inversion(%)": 0,
-    "IntervalProgress": [],
+    "IntervalProgress": 0,
+    "Difficulty": 0.15,
     "Selected Chord Types": {"true": [...chordTypes()], "false": []},
-    "Selected Relative Notes": {"true": [], "false": [...relatives]},
+    "Selected Relative Notes": {"true": [], "false": [...Object.keys(relatives)]},
 }
 
 export {

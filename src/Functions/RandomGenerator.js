@@ -1,4 +1,4 @@
-import { naturalNotes, flatNotes, sharpNotes } from '../Definitions';
+import { allNotes } from '../Definitions';
 
 
 function RandomGenerator(state) {
@@ -22,17 +22,7 @@ function RandomGenerator(state) {
 
   const chordsGenerator = () => {
     try {
-      
-      if (state["Flat Chords"] && state["Sharp Chords"]) {
-        return randomChords(naturalNotes.concat(sharpNotes.concat(flatNotes)))
-      }
-      if (state["Flat Chords"]) {
-        return randomChords(naturalNotes.concat(flatNotes))
-      }
-      if (state["Sharp Chords"]) {
-        return randomChords(naturalNotes.concat(sharpNotes))
-      }
-      return randomChords(naturalNotes)
+      return randomChords(allNotes)
     } catch (error) {
       console.log('erro ao tentar ler o estado');
     }
