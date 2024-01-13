@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Template from './Components/Template'
-import chordGenerator from './Functions/ChordGenerator';
+import { randomChord } from './Functions/ChordGenerator';
 import relativeGenerator from './Functions/RelativeGenerator';
 import scaleGenerator from './Functions/ScaleGenerator';
 import { playSound } from './Utils'
@@ -24,7 +24,7 @@ function App() {
       {
         state["IntervalProgress"] = 10 / state["Speed in Seconds"]
         state["currentChord"] = {
-          "Random Generator": chordGenerator,
+          "Random Generator": randomChord,
           "Scale Generator": scaleGenerator,
           "Relative Notes": relativeGenerator,
         }[state["Mode"]](state)
