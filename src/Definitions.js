@@ -48,16 +48,31 @@ let intervals = {
 }
 
 let variations = {
-    "parenthesis": ["5-", "5+", "9b", "9-", "11", "11+", "13-", "13b", "13"],
-    "slash": ["2-", "2", "4", "4+", "6", "7", "7M", "9"],
+    "parenthesis": ["4+", "5-", "5+", "9b", "9-", "11", "11+", "13-", "13b", "13"],
+    "slash": ["2-", "2", "4", "6", "7", "7M", "9"],
 }
 
-let variationOrder = ["2-", "2", "m", "3", "4", "4+", "5-", "5", "5+", "6", "7", "7M", "9b", "9-", "9", "11", "11+", "13-", "13b", "13"]
+let variationOrder = [
+    "2-", "2", "m", "3", "4", "4+", "5-", "5", "5+", "6", "7", "7M", "9b", "9-", "9", "11", "11+", "13-", "13b", "13"
+]
 
 let scales = {
-    "Natural":  ["1", "2", "b3", "4", "5", "6", "b7"],
-    "Bepop":    ["1", "2", "3", "4", "5", "6", "b7", "7"],
-    "Harmonic": ["1", "2", "3", "4", "5", "b6", "7"],
+    "Major Natural":            ["C", "D",  "E",    "F",    "G",    "A",   "B"],
+    "Minor Natural":            ["C", "D",  "Eb",   "F",    "G",    "Ab",  "Bb"],
+    "Major Harmonic":           ["C", "D",  "E",    "F",    "G",    "Ab",  "B"],
+    "Major Melodic":            ["C", "D",  "E",    "F",    "G",    "Ab",  "Bb"],
+    "Major Bepop":              ["C", "D",  "E",    "F",    "G",    "Ab",  "A",     "B"],
+    "Whole Tone":               ["C", "D",  "E",    "F#",   "G#",   "Bb"],
+    "Lydian Dominant":          ["C", "D",  "E",    "F#",   "G",    "A",   "Bb"],
+    "Minor Harmonic":           ["C", "D",  "Eb",   "F",    "G",    "Ab",  "Bb"],
+    "Minor Melodic":            ["C", "D",  "Eb",   "F",    "G",    "A",   "B"],
+    "Major Pentatonic Blues":   ["C", "D",  "Eb",   "E",    "G",    "A"],
+    "Minor Bepop":              ["C", "D",  "Eb",   "F",    "G",    "Ab",  "Bb",    "B"],
+    "Whole-Half Diminished":    ["C", "D",  "Eb",   "F",    "Gb",   "Ab",  "A",     "B"],
+    "Phrygian Dominant":        ["C", "Db", "E",    "F",    "G",    "Ab",  "Bb"],
+    "Altered Dominant":         ["C", "Db", "Eb",   "Fb",   "Gb",   "Ab",  "Bb"],
+    "Dominant Diminished":      ["C", "Db", "Eb",   "E",    "F#",   "G",   "A",     "Bb"],
+    "Minor Pentatonic Blues":   ["C", "Eb", "F",    "Gb",   "G",    "Bb"],
 }
 
 let voicings = {
