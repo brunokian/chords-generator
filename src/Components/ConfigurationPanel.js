@@ -11,7 +11,7 @@ export default function ConfigurationPanel({state, setState}) {
     }
 
     return (
-        <div className='bg-zinc-800 rounded-lg h-[48%] my-4 mx-auto w-[300px] md:w-[680px]'>
+        <div className='bg-zinc-800 rounded-lg h-[48%] my-4 mx-auto w-[300px] md:w-[750px]'>
             <Tabs title="Mode" state={state} setState={setState} options={options} />
             <div className='rounded md:p-3 text-sm'>
                 <Slider title="Speed in Seconds" state={state} setState={setState} max="30" />

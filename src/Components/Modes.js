@@ -20,21 +20,24 @@ const ChordTypes = ({state, setState}) => {
 }
 
 export default function ModeOption({ state, setState }){
-    const notes = [].concat(...Object.keys(allNotes).map(key => allNotes[key]))
-    const keys = notes.reduce((a, v) => ({ ...a, [v]: v}), {"Random":""})
+    const getKeys = () => {
+        const notes = [].concat(...Object.keys(allNotes).map(key => allNotes[key]))
+        const result = {}
+        for (let note of notes){
+            result[note] = note
+        }
+        return result
+    }
 
     const options = {
         "Random Generator": (<>
-            <Slider title="Difficulty" state={state} setState={setState} max="1" min="0" />
+            <Slider title="Difficulty" state={state} setState={setState} max="10" min="0" />
             <ChordTypes state={state} setState={setState} />
         </>),
         "Scale Generator": (<>
-            <Slider title="Difficulty" state={state} setState={setState} max="1" min="0" />
-            <SelectMenu title="Choose the Key" options={keys} state={state} setState={setState} />
-            {state["Choose the Key"] && state["Choose the Key"] !== "Random" ? (<>
-                <Slider title="Key Change Speed" state={state} setState={setState} max="30" />
-                <SelectMenu title="Choose the chords scale" state={state} setState={setState} options={scales} />
-            </>):("")}
+            <Slider title="Difficulty" state={state} setState={setState} max="10" min="0" />
+            <SelectMenu title="Choose the Key" options={getKeys()} state={state} setState={setState} />
+            <SelectMenu title="Choose the Scale" state={state} setState={setState} options={scales} />
             <ChordTypes state={state} setState={setState} />
         </>),
         "Relative Notes": <TagBox title="Selected Relative Notes" state={state} setState={setState} backgroundClass="bg-zinc-700" />
